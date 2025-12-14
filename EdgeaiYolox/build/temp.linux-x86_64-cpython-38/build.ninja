@@ -1,0 +1,26 @@
+ninja_required_version = 1.3
+cxx = c++
+
+cflags = -pthread -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O2 -Wall -g -fstack-protector-strong -Wformat -Werror=format-security -g -fwrapv -O2 -fPIC -I/home/student/2025BA/EdgeAI/edgeai-yolox/yolox/layers/csrc -I/home/student/venv/lib/python3.8/site-packages/torch/include -I/home/student/venv/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -I/home/student/venv/lib/python3.8/site-packages/torch/include/TH -I/home/student/venv/lib/python3.8/site-packages/torch/include/THC -I/home/student/venv/include -I/usr/include/python3.8 -c
+post_cflags = -O3 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=_C -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++17
+cuda_dlink_post_cflags = 
+ldflags = 
+
+rule compile
+  command = $cxx -MMD -MF $out.d $cflags -c $in -o $out $post_cflags
+  depfile = $out.d
+  deps = gcc
+
+
+
+
+
+build /home/student/2025BA/EdgeAI/edgeai-yolox/build/temp.linux-x86_64-cpython-38/home/student/2025BA/EdgeAI/edgeai-yolox/yolox/layers/csrc/cocoeval/cocoeval.o: compile /home/student/2025BA/EdgeAI/edgeai-yolox/yolox/layers/csrc/cocoeval/cocoeval.cpp
+build /home/student/2025BA/EdgeAI/edgeai-yolox/build/temp.linux-x86_64-cpython-38/home/student/2025BA/EdgeAI/edgeai-yolox/yolox/layers/csrc/vision.o: compile /home/student/2025BA/EdgeAI/edgeai-yolox/yolox/layers/csrc/vision.cpp
+
+
+
+
+
+
+
